@@ -19,12 +19,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final FirebaseDynamicLinks _dynamicLinks = FirebaseDynamicLinks.instance;
+  // final FirebaseDynamicLinks _dynamicLinks = FirebaseDynamicLinks.instance;
 
   @override
   void initState() {
-    _dynamicLinks.getInitialLink();
-    _initDynamicLinks();
+    // _dynamicLinks.getInitialLink();
+    // _initDynamicLinks();
     // OneSignal.shared.setLogLevel(OSLogLevel.debug, OSLogLevel.none);
     // OneSignal.shared.setAppId("4911e1af-dafc-4ebd-aede-fc1f9d211bde");
     super.initState();
@@ -39,27 +39,27 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  void _initDynamicLinks() async {
-    _dynamicLinks.onLink.listen((dynamicLinkData) {
-      final Uri depLink = dynamicLinkData.link;
-      String id = depLink.queryParameters['id']!;
-      String cityName = depLink.queryParameters['cityName']!;
-      String propertyCode = depLink.queryParameters['propertyCode']!;
-      String unitNumber = depLink.queryParameters['unitNumber']!;
-      String screen = depLink.queryParameters['screen']!;
-      if (screen.isNotEmpty) {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (_) => Test(
-        //           propertyCode: propertyCode,
-        //           cityName: cityName,
-        //           unitNumber: unitNumber,
-        //           id: int.parse(id),
-        //         )));
-      }
-    }).onError((error) {});
-  }
+  // void _initDynamicLinks() async {
+  //   _dynamicLinks.onLink.listen((dynamicLinkData) {
+  //     final Uri depLink = dynamicLinkData.link;
+  //     String id = depLink.queryParameters['id']!;
+  //     String cityName = depLink.queryParameters['cityName']!;
+  //     String propertyCode = depLink.queryParameters['propertyCode']!;
+  //     String unitNumber = depLink.queryParameters['unitNumber']!;
+  //     String screen = depLink.queryParameters['screen']!;
+  //     if (screen.isNotEmpty) {
+  //       // Navigator.push(
+  //       //     context,
+  //       //     MaterialPageRoute(
+  //       //         builder: (_) => Test(
+  //       //           propertyCode: propertyCode,
+  //       //           cityName: cityName,
+  //       //           unitNumber: unitNumber,
+  //       //           id: int.parse(id),
+  //       //         )));
+  //     }
+  //   }).onError((error) {});
+  // }
 
 
   //create and share
