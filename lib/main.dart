@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:deep_linking/first_screen/first_screen.dart';
+import 'package:deep_linking/notifications_api/notifications_api.dart';
 import 'package:deep_linking/second_screen/second_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,36 +35,37 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {'/secondScreen': (BuildContext context) => SecondScreen(),},
+      routes: {
+        '/secondScreen': (BuildContext context) => const SecondScreen(),
+      },
       initialRoute: '/',
       home: const FirstScreen(),
     );
   }
 
-  // void _initDynamicLinks() async {
-  //   _dynamicLinks.onLink.listen((dynamicLinkData) {
-  //     final Uri depLink = dynamicLinkData.link;
-  //     String id = depLink.queryParameters['id']!;
-  //     String cityName = depLink.queryParameters['cityName']!;
-  //     String propertyCode = depLink.queryParameters['propertyCode']!;
-  //     String unitNumber = depLink.queryParameters['unitNumber']!;
-  //     String screen = depLink.queryParameters['screen']!;
-  //     if (screen.isNotEmpty) {
-  //       // Navigator.push(
-  //       //     context,
-  //       //     MaterialPageRoute(
-  //       //         builder: (_) => Test(
-  //       //           propertyCode: propertyCode,
-  //       //           cityName: cityName,
-  //       //           unitNumber: unitNumber,
-  //       //           id: int.parse(id),
-  //       //         )));
-  //     }
-  //   }).onError((error) {});
-  // }
+// void _initDynamicLinks() async {z
+//   _dynamicLinks.onLink.listen((dynamicLinkData) {
+//     final Uri depLink = dynamicLinkData.link;
+//     String id = depLink.queryParameters['id']!;
+//     String cityName = depLink.queryParameters['cityName']!;
+//     String propertyCode = depLink.queryParameters['propertyCode']!;
+//     String unitNumber = depLink.queryParameters['unitNumber']!;
+//     String screen = depLink.queryParameters['screen']!;
+//     if (screen.isNotEmpty) {
+//       // Navigator.push(
+//       //     context,
+//       //     MaterialPageRoute(
+//       //         builder: (_) => Test(
+//       //           propertyCode: propertyCode,
+//       //           cityName: cityName,
+//       //           unitNumber: unitNumber,
+//       //           id: int.parse(id),
+//       //         )));
+//     }
+//   }).onError((error) {});
+// }
 
-
-  //create and share
+//create and share
 //  void _shareUnit(
 //       {required HelperClass helperClass,
 //       required UnitDetailsModule unitDetailsModule}) {
@@ -76,6 +79,14 @@ class _MyAppState extends State<MyApp> {
 //       return Share.share(value);
 //     });
 //   }
+
 }
 
-
+// StreamSubscription<RemoteMessage> _onMessageListen() {
+//   return FirebaseMessaging.onMessage.listen((onMessage) {
+//     NotificationApi.showNotification(
+//         title: onMessage.notification!.title,
+//         body: onMessage.notification!.body,
+//         payload: onMessage.notification!.body);
+//   });
+// }
